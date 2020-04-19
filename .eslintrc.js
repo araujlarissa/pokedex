@@ -41,7 +41,8 @@ module.exports = {
     'no-alert': 'off',
     'no-param-reassign': 'off',
     'no-console': ["error", { allow: ["tron"] }],
-    'global-require': 'off'
+    'global-require': 'off',
+    'jsx-a11y/anchor-is-valid': 'off'
   },
   settings: {
     'import/resolver': {
