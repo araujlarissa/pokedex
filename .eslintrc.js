@@ -44,10 +44,10 @@ module.exports = {
     'global-require': 'off'
   },
   settings: {
-    "import/resolver": {
-      "babel-plugin-root-import": {
-        rootPathSuffix: "src"
-      },
-    },
-  },
+    'import/resolver': {
+      'babel-plugin-root-import': {
+        rootPathSuffix: 'src'
+      }
+    }
+  }
 };
