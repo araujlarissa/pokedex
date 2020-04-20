@@ -42,7 +42,8 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-console': ["error", { allow: ["tron"] }],
     'global-require': 'off',
-    'jsx-a11y/anchor-is-valid': 'off'
+    'jsx-a11y/anchor-is-valid': 'off',
+    'react-hooks/exhaustive-deps': 'off'
   },
   settings: {
     'import/resolver': {
