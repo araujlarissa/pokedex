@@ -3,14 +3,15 @@ import React from 'react';
 import GlobalStyle from './styles/global';
 
 import Header from './components/Header';
-import PokeList from './components/PokeList';
+
+import Routes from './routes';
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <Header />
-      <PokeList />
+      <Routes />
     </>
   );
 }

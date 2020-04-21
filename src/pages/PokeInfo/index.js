@@ -1,5 +1,8 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 import axios from 'axios';
 
 import {
@@ -11,27 +14,35 @@ import {
   TypePokemon,
 } from './styles';
 
-const Card = ({ url }) => {
+const PokeInfo = () => {
+  const { id } = useParams();
+
   const [pokemon, setPokemon] = useState({
     id: 0,
     name: '',
     types: [],
     thumb: '',
-    info: '',
+    habilities: [],
+    height: 0,
+    weigth: 0,
+    base_stats: [],
   });
 
   useEffect(() => {
     axios
-      .get(url)
+      .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then((response) => {
         const { data } = response;
 
         setPokemon({
-          id: data.id,
+          id,
           name: data.name,
           types: data.types,
           thumb: `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`,
-          info: `/pokemon/${data.id}`,
+          habilities: data.abilities,
+          height: data.height,
+          weigth: data.weight,
+          base_stats: data.stats,
         });
       })
       .catch((error) => {
@@ -52,8 +63,25 @@ const Card = ({ url }) => {
           <li key={t.slot}>{t.type.name}</li>
         ))}
       </TypePokemon>
+      <TypePokemon>
+        Habilities:
+        {pokemon.habilities.map((hab) => {
+          if (!hab.is_hidden) return <li key={hab.slot}>{hab.ability.name}</li>;
+        })}
+      </TypePokemon>
+      <span>{pokemon.height}</span>
+      <span>{pokemon.weigth}</span>
+
+      <TypePokemon>
+        Base stats:
+        {pokemon.base_stats.map((base) => (
+          <li key={base.stat.name}>
+            {base.stat.name} {base.base_stat}
+          </li>
+        ))}
+      </TypePokemon>
     </CardItem>
   );
 };
 
-export default Card;
+export default PokeInfo;
