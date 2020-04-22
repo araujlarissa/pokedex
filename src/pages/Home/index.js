@@ -4,13 +4,14 @@ import axios from 'axios';
 import { Container, CardList } from './styles';
 
 import PokeItem from '~/components/PokeItem';
+import NavGeneration from '~/components/NavGeneration';
 
 const PokeList = () => {
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
     axios
-      .get('https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0')
+      .get(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0`)
       .then((response) => {
         setPokemons(response.data.results);
       })
@@ -21,6 +22,7 @@ const PokeList = () => {
 
   return (
     <Container>
+      <NavGeneration />
       <CardList>
         {pokemons.map((pokemon) => (
           <PokeItem key={pokemon.name} url={pokemon.url} />

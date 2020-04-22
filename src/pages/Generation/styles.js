@@ -12,3 +12,17 @@ export const CardList = styled.section`
   justify-content: center;
   flex-wrap: wrap;
 `;
+
+export const Nav = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const NavLink = styled.button`
+  text-decoration: none;
+  color: #333;
+  font-size: 1.6rem;
+  margin: 0 auto;
+`;
